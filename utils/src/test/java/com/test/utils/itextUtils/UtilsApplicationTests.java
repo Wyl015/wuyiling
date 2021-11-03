@@ -86,8 +86,8 @@ class UtilsApplicationTests {
     @Test
     public void replaceString1() throws IOException, XDocReportException {
         //1.通过freemarker模板引擎加载文档，并缓存到registry中
-//        InputStream in = new FileInputStream("C:\\Users\\Admin\\Desktop\\ItextpdfTest\\xDoc测试.docx");
-        InputStream in = new FileInputStream("C:\\Users\\Admin\\Desktop\\ItextpdfTest\\ODTUTILS功能测试1.odt");
+        InputStream in = new FileInputStream("C:\\Users\\Admin\\Desktop\\ItextpdfTest\\xDoc测试.docx");
+//        InputStream in = new FileInputStream("C:\\Users\\Admin\\Desktop\\ItextpdfTest\\ODTUTILS功能测试1.odt");
         IXDocReport report = XDocReportRegistry
                 .getRegistry()
                 .loadReport(in, TemplateEngineKind.Freemarker);
@@ -101,6 +101,7 @@ class UtilsApplicationTests {
         //3.模拟填充数据
         String title = "项目开发报告";
         Project project = new Project("网站开发", "截至2018年年底");
+//        Project project = new Project("", "截至2018年年底");
         List<Employee> employees = new ArrayList<Employee>();
         employees.add(new Employee("张三", "产品", "任务完成"));
         employees.add(new Employee("李四", "开发", "任务完成"));
@@ -114,8 +115,8 @@ class UtilsApplicationTests {
         context.put("project", project);
         context.put("lists", employees);
         context.put("logo", logo);
-//        OutputStream out = new FileOutputStream(new File("C:\\Users\\Admin\\Desktop\\ItextpdfTest\\xDoc测试1.docx"));
-        OutputStream out = new FileOutputStream(new File("C:\\Users\\Admin\\Desktop\\ItextpdfTest\\ODTUTILS功能测试2.odt"));
+        OutputStream out = new FileOutputStream(new File("C:\\Users\\Admin\\Desktop\\ItextpdfTest\\xDoc测试3.docx"));
+//        OutputStream out = new FileOutputStream(new File("C:\\Users\\Admin\\Desktop\\ItextpdfTest\\ODTUTILS功能测试2.odt"));
         report.process(context, out);
     }
 

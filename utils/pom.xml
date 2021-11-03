@@ -90,12 +90,6 @@
 
 
 
-        <!-- 国密算法工具类1  https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk16 -->
-<!--        <dependency>-->
-<!--            <groupId>org.bouncycastle</groupId>-->
-<!--            <artifactId>bcprov-jdk16</artifactId>-->
-<!--            <version>1.46</version>-->
-<!--        </dependency>-->
 
         <!-- 国密算法工具类2 https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk15on -->
         <dependency>
@@ -108,6 +102,11 @@
             <artifactId>spring-boot-starter-web</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+
 
     </dependencies>
 

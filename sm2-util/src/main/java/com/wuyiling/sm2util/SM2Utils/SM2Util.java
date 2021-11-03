@@ -1,10 +1,8 @@
-package com.test.utils.cryptology;
+package com.wuyiling.sm2util.SM2Utils;
 
 import org.bouncycastle.asn1.gm.GMNamedCurves;
 import org.bouncycastle.asn1.gm.GMObjectIdentifiers;
 import org.bouncycastle.asn1.x9.X9ECParameters;
-import org.bouncycastle.crypto.engines.SM2Engine;
-import org.bouncycastle.crypto.params.ECPrivateKeyParameters;
 import org.bouncycastle.jcajce.provider.asymmetric.ec.BCECPrivateKey;
 import org.bouncycastle.jcajce.provider.asymmetric.ec.BCECPublicKey;
 import org.bouncycastle.jcajce.provider.asymmetric.x509.CertificateFactory;
@@ -14,6 +12,7 @@ import org.bouncycastle.jce.spec.ECPrivateKeySpec;
 import org.bouncycastle.jce.spec.ECPublicKeySpec;
 import org.bouncycastle.math.ec.ECPoint;
 import org.bouncycastle.util.encoders.Hex;
+import org.springframework.stereotype.Component;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -30,6 +29,7 @@ import java.security.spec.ECGenParameterSpec;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Base64;
 
+@Component
 public class SM2Util {
     private BouncyCastleProvider provider;
     // 获取SM2相关参数

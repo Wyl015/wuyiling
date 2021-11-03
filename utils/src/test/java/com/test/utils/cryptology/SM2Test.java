@@ -45,7 +45,7 @@ public class SM2Test {
         String prvKey = privateKey.getD().toString(16);
         // true  代表压缩密钥，以02、03开头，长度为33字节
         // false 代表未压缩，以04开头，长度为65字节
-        String pubKey = new String(Hex.encode(publicKey.getQ().getEncoded(true)));
+        String pubKey = new String(Hex.encode(publicKey.getQ().getEncoded(false)));
 
 
         System.out.println("prvKey: " + prvKey );

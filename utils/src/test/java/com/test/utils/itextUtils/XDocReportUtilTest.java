@@ -17,7 +17,7 @@ public class XDocReportUtilTest {
 
     @Test
     public void listFreemarkFields() throws IOException, XDocReportException {
-        String templatePath = "C:\\Users\\Admin\\Desktop\\ItextpdfTest\\ODTUTILS功能测试1.odt";
+        String templatePath = "C:\\Users\\Admin\\Desktop\\ItextpdfTest\\xDoc测试.docx";
         InputStream inputStream = new FileInputStream(templatePath);
         final XDocReportRegistry registry = XDocReportRegistry.getRegistry();
         final IXDocReport ixDocReport = registry.loadReport(inputStream, TemplateEngineKind.Freemarker);

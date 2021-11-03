@@ -16,6 +16,7 @@ import java.security.InvalidKeyException;
 import java.security.KeyPair;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.util.Base64;
 
 public class MD5SM2Test {
 
@@ -46,7 +47,7 @@ public class MD5SM2Test {
             System.out.println("加密前：" + str);
             String encode = sm2.encode(str, pubKey);
             System.out.println("加密后：" + encode);
-            String decoder = new String(sm2.decoder(encode, prvKey));
+            String decoder = new String(sm2.decode(encode, prvKey));
             System.out.println("解密后：" + decoder);
         } catch (Exception e) {
             System.out.println("加解密测试错误");
@@ -73,7 +74,7 @@ public class MD5SM2Test {
         KeyPair keyPair = sm2.generateSm2KeyPair();
         BCECPrivateKey privateKey = (BCECPrivateKey) keyPair.getPrivate();
         BCECPublicKey publicKey = (BCECPublicKey) keyPair.getPublic();
-        String pubKey = new String(Hex.encode(publicKey.getQ().getEncoded(true)));
+        String pubKey = new String(Hex.encode(publicKey.getQ().getEncoded(false)));
         String prvKey = privateKey.getD().toString(16);
         System.out.println("Public Key: " + pubKey);
         System.out.println("Private Key: " + prvKey);
@@ -102,7 +103,7 @@ public class MD5SM2Test {
         System.out.println("传入密码" + testQuery.getPassword());
 
         try {
-            String decoder = new String(sm2.decoder(password, prvKey));
+            String decoder = new String(sm2.decode(password, prvKey));
             System.out.println("解密后：" + decoder);
         } catch (Exception e) {
             System.out.println("解密测试错误");
@@ -124,7 +125,7 @@ public class MD5SM2Test {
         String prvKey = privateKey.getD().toString(16);
         System.out.println("Public Key: " + pubKey);
         System.out.println("Private Key: " + prvKey);
-        String psw = "123" ;
+        String psw = "Ab@123456" ;
         String psw1 = "" ;
         try {
             psw1 = sm2.encode(psw, pubKey);
@@ -140,5 +141,61 @@ public class MD5SM2Test {
     }
 
 
+    @Test
+    public void test3() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        //生成密钥
+        SM2Util sm2 = new SM2Util();
+        String pubKey = "040239dd4651957f90e42ad1e895375d02bb3e284ed26626ef082b09ac38aaac68537b143466e24ab7a7823e27e673f2074f9b02a05a4182bf0527b06c608779b1";
+        String prvKey = "739880492a1c3c169bba0124df7fe8c9b88c28a6233c05ca61dbc4cc5b9cfbf0";
+        System.out.println("Public Key: " + pubKey);
+        System.out.println("Private Key: " + prvKey);
+        String psw = "Aa@123456" ;
+        // 加解密测试
+        try {
+            System.out.println("加密前：" + psw);
+            String encode = sm2.encode(psw, pubKey);
+            System.out.println("加密后：" + encode);
+            String decoder = new String(sm2.decode2(encode, prvKey));
+            System.out.println("解密后：" + decoder);
+        } catch (Exception e) {
+            System.out.println("加解密测试错误");
+        }
+    }
+
+    @Test
+    public void test4()  {
+        SM2Util sm2 = new SM2Util();
+        //生成密钥
+        String input = "cfe1dabd772072742cd07659d772d1c9e77b60adbee9599ba06b570781a3bdd6";
+        String prvKey = "cfe1dabd772072742cd07659d772d1c9e77b60adbee9599ba06b570781a3bdd6";
+        // 加解密测试
+        try {
+            String decoder = new String(sm2.decode2(input, prvKey));
+            System.out.println("解密后：" + decoder);
+
+        } catch (Exception e) {
+            System.out.println("加解密测试错误");
+        }
+
+    }
+
+
+
+
+    @Test
+    public void test5() throws NoSuchPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException, InvalidKeySpecException {
+        String IOSinput ="ECADD5FF9EA9BB801D00ADCC716C9C2400C62AD85D9300B9F8D152EAFB44FBB024B70A221DFD5B3A6177A073C0EAABE65EDF820CCD0403CE33B9C97CF3D02376FD9E0F79ABAD49160F8DD03F66C277065897C0F20FA55230D089A3B89193449CB96630";
+        String prvkey = "f6a13c5c9485097050df9d30eda54eda6d3ba9f735755b3562e990aed0bc99a0";
+
+        byte[] bytes = IOSinput.getBytes();
+
+
+        SM2Util sm2Util = new SM2Util();
+
+
+        String decoder = new String(sm2Util.decode2(bytes,prvkey));
+
+        System.out.println(decoder);
+    }
 
 }
