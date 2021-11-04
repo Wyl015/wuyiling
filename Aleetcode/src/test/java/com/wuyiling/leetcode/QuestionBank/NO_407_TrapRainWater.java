@@ -2,7 +2,7 @@ package com.wuyiling.leetcode.QuestionBank;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class NO_407_TrapRainWater {
 
@@ -18,15 +18,29 @@ public class NO_407_TrapRainWater {
     @Test
     public void test(){
         String[] result = inputS.split("\\],\\[");
-        for (String s : result) {
-            System.out.println(s);
-        }
+        System.out.println(result.length);
+        int[][] ints = new int[result.length][];
+        System.out.println(ints.length);
+        for (String s : result){
+            s = s.replace("[","").replace("]", "");
 
+            System.out.println(s);
+            String[] split = s.split(",");
+
+
+
+        }
     }
 
-
     @Test
-    public void test2() {
+    public void test2(){
+        char[] chars = inputS.toCharArray();
+        System.out.println(chars.length);
+        System.out.println(chars);
+
+    }
+    @Test
+    public void MainTest() {
         int result = trapRainWater(inputI);
         System.out.println(result);
     }

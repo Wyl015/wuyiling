@@ -38,11 +38,13 @@ public class SM2TestController {
         byte[] decodeByte = SM2Util.decode(query.getInput(), SM2KsyPair.prvKey);
         return new String(decodeByte);
     }
+
     @ApiOperation(value = "公钥")
     @GetMapping("/SM2/pubkey")
     public String SM2PubKey() {
         return SM2KsyPair.pubKey;
     }
+
     @ApiOperation(value = "私钥")
     @GetMapping("/SM2/prvkey")
     public String SM2PrvKey() {
