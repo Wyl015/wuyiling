@@ -145,8 +145,8 @@ public class MD5SM2Test {
     public void test3() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         //生成密钥
         SM2Util sm2 = new SM2Util();
-        String pubKey = "040239dd4651957f90e42ad1e895375d02bb3e284ed26626ef082b09ac38aaac68537b143466e24ab7a7823e27e673f2074f9b02a05a4182bf0527b06c608779b1";
-        String prvKey = "739880492a1c3c169bba0124df7fe8c9b88c28a6233c05ca61dbc4cc5b9cfbf0";
+        String pubKey = "0403fb7f37a484e6efea50b86dd499901a7fcf54e3ab440e30ee79864729029fa33dbe794863e50a1af1b4dfdbe156cb71aff4bd863d0193d9ef4f7bddb50d1487";
+        String prvKey = "2f08402314ffaef96a124f0eacd384f2f25c629c91d724130e64826541f8ec6";
         System.out.println("Public Key: " + pubKey);
         System.out.println("Private Key: " + prvKey);
         String psw = "Aa@123456" ;
