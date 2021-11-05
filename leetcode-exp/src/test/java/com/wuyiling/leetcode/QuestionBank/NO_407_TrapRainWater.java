@@ -10,7 +10,7 @@ public class NO_407_TrapRainWater {
     int[][] inputI = {{1,4,3,1,3,2},{3,2,1,3,2,4},{2,3,3,2,3,1}};
     /*
      * @Author wyl
-     * @Description 失败
+     * @Description 数据读取 失败
      * @Date 16:22 2021/11/3
      * @Param []
      * @return void
@@ -26,8 +26,6 @@ public class NO_407_TrapRainWater {
 
             System.out.println(s);
             String[] split = s.split(",");
-
-
 
         }
     }
