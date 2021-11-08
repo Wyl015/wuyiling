@@ -18,6 +18,7 @@ public enum ResponseCodeEnum {
     ILLEGALITY_ERROR(1006, "非法请求"),
     VERIFY_CODE_INVALID(1007,"验证码已过期,请重新获取验证码"),
     SM2_ERROR(1008,"国密工具异常"),
+    FACE_ID_ERROR(1009,"调用FaceID进行OCR识别IO异常"),
     ;
     /**
      * 响应码
