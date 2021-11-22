@@ -86,8 +86,8 @@ class UtilsApplicationTests {
     @Test
     public void replaceString1() throws IOException, XDocReportException {
         //1.通过freemarker模板引擎加载文档，并缓存到registry中
-        InputStream in = new FileInputStream("C:\\Users\\Admin\\Desktop\\ItextpdfTest\\xDoc测试.docx");
-//        InputStream in = new FileInputStream("C:\\Users\\Admin\\Desktop\\ItextpdfTest\\ODTUTILS功能测试1.odt");
+//        InputStream in = new FileInputStream("C:\\Users\\Admin\\Desktop\\ItextpdfTest\\xDoc测试.docx");
+        InputStream in = new FileInputStream("C:\\Users\\Admin\\Desktop\\ItextpdfTest\\ODTUTILS功能测试1.odt");
         IXDocReport report = XDocReportRegistry
                 .getRegistry()
                 .loadReport(in, TemplateEngineKind.Freemarker);
@@ -95,28 +95,64 @@ class UtilsApplicationTests {
         FieldsMetadata fieldsMetadata = report.createFieldsMetadata();
         fieldsMetadata.load("project", Project.class);
         fieldsMetadata.load("employees", Employee.class, true);
-        fieldsMetadata.addFieldAsImage("logo");
+//        fieldsMetadata.addFieldAsImage("logo");
         report.setFieldsMetadata(fieldsMetadata);
 
         //3.模拟填充数据
         String title = "项目开发报告";
-        Project project = new Project("网站开发", "截至2018年年底");
+        Project project = new Project("网站开发2", "截至2018年年底");
 //        Project project = new Project("", "截至2018年年底");
         List<Employee> employees = new ArrayList<Employee>();
         employees.add(new Employee("张三", "产品", "任务完成"));
         employees.add(new Employee("李四", "开发", "任务完成"));
-        IImageProvider logo = new FileImageProvider(
-                new File("C:\\Users\\Admin\\Desktop\\ItextpdfTest\\1.jpg"),
-                true);
+//        IImageProvider logo = new FileImageProvider(
+//                new File("C:\\Users\\Admin\\Desktop\\ItextpdfTest\\1.jpg"),
+//                true);
 //        logo.setSize(200f, 100f);
         //4.匹配填充字段和填充数据，进行填充
         IContext context = report.createContext();
         context.put("title", title);
         context.put("project", project);
         context.put("lists", employees);
-        context.put("logo", logo);
-        OutputStream out = new FileOutputStream(new File("C:\\Users\\Admin\\Desktop\\ItextpdfTest\\xDoc测试3.docx"));
-//        OutputStream out = new FileOutputStream(new File("C:\\Users\\Admin\\Desktop\\ItextpdfTest\\ODTUTILS功能测试2.odt"));
+//        context.put("logo", logo);
+//        OutputStream out = new FileOutputStream(new File("C:\\Users\\Admin\\Desktop\\ItextpdfTest\\xDoc测试3.docx"));
+        OutputStream out = new FileOutputStream(new File("C:\\Users\\Admin\\Desktop\\ItextpdfTest\\ODTUTILS功能测试2.odt"));
+        report.process(context, out);
+    }
+    //填充
+    @Test
+    public void replaceString2() throws IOException, XDocReportException {
+        //1.通过freemarker模板引擎加载文档，并缓存到registry中
+
+        InputStream in = new FileInputStream("C:\\Users\\Admin\\Desktop\\ItextpdfTest\\债务追偿模板测试.odt");
+        IXDocReport report = XDocReportRegistry
+                .getRegistry()
+                .loadReport(in, TemplateEngineKind.Freemarker);
+
+        IContext context = report.createContext();
+        context.put("code.installmentApplicationName", "借款人");
+        context.put("code.sex", "sex");
+        context.put("code.installmentApplicationCard", "installmentApplicationCard");
+        context.put("code.installmentApplicationPhone", "installmentApplicationPhone");
+
+        context.put("code.installmentCoApplicationName", "借款人配偶");
+        context.put("code.coSex", "coSex");
+        context.put("code.installmentCoApplicationCard", "installmentCoApplicationCard");
+        context.put("code.installmentCoApplicationPhone", "installmentCoApplicationPhone");
+
+        context.put("code.ct_001", "ct_001");
+        context.put("code.ct_002", "ct_002");
+        context.put("code.ct_003", "ct_003");
+        context.put("code.ct_004", "ct_004");
+        context.put("code.ct_005", "ct_005");
+        context.put("code.ct_006", "ct_006");
+        context.put("code.ct_007", "ct_007");
+
+        context.put("code.year", "2020");
+        context.put("code.month", "11");
+        context.put("code.day", "18");
+
+        OutputStream out = new FileOutputStream(new File("C:\\Users\\Admin\\Desktop\\ItextpdfTest\\债务追偿模板测试结果.odt"));
         report.process(context, out);
     }
 
