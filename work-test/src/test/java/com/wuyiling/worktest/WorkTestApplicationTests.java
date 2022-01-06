@@ -42,7 +42,6 @@ class WorkTestApplicationTests {
         String BANKCARD = "123456789123456789";
     }
 
-
     @Test
     public void testleetcode() {
         int[] a = new int[16];
