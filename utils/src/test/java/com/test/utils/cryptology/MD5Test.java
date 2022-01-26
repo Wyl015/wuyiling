@@ -7,7 +7,7 @@ public class MD5Test {
 
     @Test
     public void MD5Test() {
-        String psd = "Hbgh@54321";
+        String psd = "Yunxin@54321";
         System.out.println(new String(psd.getBytes()));
         String digestPwd1 = DigestUtils.md5DigestAsHex(psd.getBytes());
         System.out.println(digestPwd1);
@@ -17,7 +17,6 @@ public class MD5Test {
     @Test
     public void StringTest() {
         String psd = "\"专项业务远程视频辅助验证\"由中国工商银行贵州省分行合作公司-杭州宇为科技有限公司提供相关服务";
-
         System.out.println(psd);
 
     }

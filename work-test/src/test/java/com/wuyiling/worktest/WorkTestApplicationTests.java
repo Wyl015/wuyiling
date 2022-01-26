@@ -45,6 +45,10 @@ class WorkTestApplicationTests {
     @Test
     public void testleetcode() {
         int[] a = new int[16];
+        String b = "abc你好afd";
+        String s = b.toUpperCase();
+        System.out.println(b);
+        System.out.println(s);
     }
 
 }
