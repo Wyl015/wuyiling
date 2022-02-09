@@ -6,6 +6,7 @@
     <modules>
         <module>TestKylin</module>
         <module>SpringCloud</module>
+        <module>DroolsTest</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
