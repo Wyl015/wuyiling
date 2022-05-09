@@ -7,7 +7,7 @@ public class MD5Test {
 
     @Test
     public void MD5Test() {
-        String psd = "Yunxin@54321";
+        String psd = "Admin@54321";
         System.out.println(new String(psd.getBytes()));
         String digestPwd1 = DigestUtils.md5DigestAsHex(psd.getBytes());
         System.out.println(digestPwd1);
